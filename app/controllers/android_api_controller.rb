@@ -23,9 +23,9 @@ class AndroidApiController < ApplicationController
   	@transport.long = params['long']
   	@transport.session = "active"
   	if @transport.save
-        render :text => "true,#{@transport.id}"
+      render :text => "true,#{@transport.id}"
     else
-        render :text => "false"
+      render :text => "false"
     end
   end
   	
