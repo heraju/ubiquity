@@ -1,6 +1,9 @@
 Ubiquity::Application.routes.draw do
   
   
+  resources :transport_types
+
+
   resources :authentications
 
 
