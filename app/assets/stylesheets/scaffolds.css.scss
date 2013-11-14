@@ -1,6 +1,5 @@
 body {
   
-  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -44,6 +43,7 @@ div {
   background-color: red;
   display: table;
 }
+#map { height: 180px; }
 
 #error_explanation {
   width: 450px;
