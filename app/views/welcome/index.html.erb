@@ -3,18 +3,24 @@
 <div id="map" style="height: 400px"></div>
 </div>
 <div class="span1"></div>
-
+<div id = "result"><%= @lat_long_values %></div>
   
    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
   <script>
-     console.log(<%= @lat_long_values %>);
     var map = L.map('map').setView([12.96, 77.56], 13);
-
+    var result=<%= raw @lat_long_values.to_json %>;
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
     }).addTo(map);
+      if (result==false){
 
-      L.marker([<%= @lat_long_values[0] %>,<%= @lat_long_values[1]%>]).addTo(map)
-      .bindPopup("<b>Bus Number</b>.").openPopup();
+      }
+      else{
+        for(var i=0; i < result.length; i++)
+          {
+             L.marker([result[i][0],result[i][1]]).addTo(map)
+             .bindPopup("<b>Bus Number: "+result[i][2]+"</b>.").openPopup();
+           }
+      } 
   </script>
