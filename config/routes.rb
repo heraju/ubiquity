@@ -20,6 +20,12 @@ Ubiquity::Application.routes.draw do
 
 
   resources :authentications
+  
+  resources :android_api do
+    collection do 
+      get :android_connect_user
+    end
+  end
 
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
