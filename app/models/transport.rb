@@ -6,7 +6,6 @@ class Transport < ActiveRecord::Base
   belongs_to :user
 
   after_create :create_geo_point
-  after_save :save_geo_point
 
   def get_near_by_points(distanceInKM = '1')
     geo = $geoService.get_near_by_points_by_max_distance($geoStorageName, self.lat, self.long, distanceInKM)
