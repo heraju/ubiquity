@@ -32,7 +32,15 @@ class AndroidApiController < ApplicationController
   def android_destroy_trip
   	#http://www.cuputt.com/android_api/android_destroy_trip?userid=1&tripid=1&lat=12.96&long=77.56
   	@transport = Transport.find(params["tripid"].to_i)
-  	render :text => @transport.session
+  	if @transport.update_attributes(:session => "close")
+        render :text => "true"
+    else
+        render :text => "false"
+    end
+  end
+
+  def android_stream_geo
+  	
   end	
   	
 end
