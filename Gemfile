@@ -24,6 +24,10 @@ gem 'jquery-rails'
 
 gem 'unicorn', '4.6.3'
 
+gem 'omniauth-facebook'
+
+gem 'therubyracer'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
