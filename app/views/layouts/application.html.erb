@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Ubiquity</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "facebook" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div class="navbar navbar-default navbar-fixed-top">
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render :partial => 'shared/head' %>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <a href="../" class="navbar-brand">Ubiquity</a>
@@ -66,7 +65,7 @@
       </div>
     </div>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>
