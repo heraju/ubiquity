@@ -19,7 +19,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "App42_RUBY_SDK", "~> 0.8.2"
 gem 'jquery-rails'
 
 gem 'unicorn', '4.6.3'
