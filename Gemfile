@@ -51,3 +51,5 @@ gem 'omniauth-facebook', '1.5.0'
 gem "therubyracer", '0.12.0'
 gem "less-rails", '2.4.2' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails", '2.2.8'
+
+# gem 'geocoder', '1.1.8'
