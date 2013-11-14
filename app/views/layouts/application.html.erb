@@ -34,10 +34,15 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#login" >Login</a></li>
-            <li><a href="#signup" >Sign-up</a></li>
+            <% if current_user %>
+              <li><a href="#signout" >Signout</a></li>
+              <li><%= link_to "Find Friends", '#users_path' %></li>
+              <%#= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+            <% else %>
+              <li><a href="#login" >Login</a></li>
+              <li><a href="#signup" >Sign-up</a></li>
+            <% end %>
           </ul>
-
         </div>
       </div>
     </div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  statusable_id: 1
+  statusable_type: MyString
+
+two:
+  name: MyString
+  statusable_id: 1
+  statusable_type: MyString

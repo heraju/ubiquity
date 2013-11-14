@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114124625) do
+ActiveRecord::Schema.define(:version => 20131114151146) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,57 @@ ActiveRecord::Schema.define(:version => 20131114124625) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "geo_locations", :force => true do |t|
+    t.float    "lat"
+    t.float    "long"
+    t.integer  "locatable_id"
+    t.string   "locatable_type"
+    t.string   "state"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
+    t.integer  "statusable_id"
+    t.string   "statusable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "transport_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "transports", :force => true do |t|
+    t.integer  "transport_type_id"
+    t.text     "session"
+    t.integer  "user_id"
+    t.string   "number"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "users", :force => true do |t|

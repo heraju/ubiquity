@@ -1,0 +1,37 @@
+<%= form_for(@geo_location) do |f| %>
+  <% if @geo_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@geo_location.errors.count, "error") %> prohibited this geo_location from being saved:</h2>
+
+      <ul>
+      <% @geo_location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lat %><br />
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :long %><br />
+    <%= f.text_field :long %>
+  </div>
+  <div class="field">
+    <%= f.label :locatable_id %><br />
+    <%= f.number_field :locatable_id %>
+  </div>
+  <div class="field">
+    <%= f.label :locatable_type %><br />
+    <%= f.text_field :locatable_type %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

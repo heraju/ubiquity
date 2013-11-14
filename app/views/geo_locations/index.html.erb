@@ -1,0 +1,31 @@
+<h1>Listing geo_locations</h1>
+
+<table>
+  <tr>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Locatable</th>
+    <th>Locatable type</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @geo_locations.each do |geo_location| %>
+  <tr>
+    <td><%= geo_location.lat %></td>
+    <td><%= geo_location.long %></td>
+    <td><%= geo_location.locatable_id %></td>
+    <td><%= geo_location.locatable_type %></td>
+    <td><%= geo_location.state %></td>
+    <td><%= link_to 'Show', geo_location %></td>
+    <td><%= link_to 'Edit', edit_geo_location_path(geo_location) %></td>
+    <td><%= link_to 'Destroy', geo_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Geo location', new_geo_location_path %>

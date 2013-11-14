@@ -1,6 +1,21 @@
 Ubiquity::Application.routes.draw do
   
   
+  resources :roles
+
+
+  resources :geo_locations
+
+
+  resources :statuses
+
+
+  resources :friendships
+
+
+  resources :transports
+
+
   resources :transport_types
 
 
