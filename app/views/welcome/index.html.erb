@@ -1,35 +1,9 @@
-<% title 'My new welcome title' %>
+<div width="500px" height="700px">
 
-<div class="container">
-  <div id="user_nav">
-
-  </div>
-
-  <div class="page-header" id="banner">
-    <div class="row">
-      <div class="col-lg-6">
-        <h1>Ubiquity</h1>
-        <% if current_user %>
-          Signed in as <strong><%= current_user.name %></strong>!
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign in with Facebook", user_omniauth_authorize_path %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <img src="/assets/1676021-auto-rickshaw.jpg" height="60%" width="60%"/>   
-    </div>	
-    <div class="col-lg-6">
-      <img src="/assets/bus-clip-art-1.jpg" height="60%" width="60%"/>   
-    </div>	
-  </div>
-  <div class="row">
-    <div class="col-cg-12 center ">
-      <h1>Ubiquity</h1>
-    </div> 
-  </div>
 </div>
-
+<div id="login">
+    <h1>Login</h1>
+</div>
+<div id="signup">
+    <h1>Sign-up</h1>
+</div>

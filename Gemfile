@@ -9,6 +9,7 @@ if ENV['RAILS_ENV'] == 'production'
   gem 'mysql2'
 else
   gem 'sqlite3'
+  gem 'mysql2'
 end
 
 
