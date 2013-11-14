@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  transport_type_id: 1
+  session: MyText
+  user_id: 1
+  number: MyString
+
+two:
+  transport_type_id: 1
+  session: MyText
+  user_id: 1
+  number: MyString

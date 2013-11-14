@@ -1,7 +1,20 @@
 Ubiquity::Application.routes.draw do
   
-  
-  get "myprofile/index"
+ 
+  resources :roles
+
+
+  resources :geo_locations
+
+
+  resources :statuses
+
+
+  resources :friendships
+
+
+  resources :transports
+
 
   resources :transport_types
 

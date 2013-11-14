@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base
   has_many :authentications
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_and_belongs_to_many :roles
+  has_many :geo_locations, as: :locatable
+  has_many :statuses, as: :statusable
+  has_many :transports
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lat:</b>
+  <%= @geo_location.lat %>
+</p>
+
+<p>
+  <b>Long:</b>
+  <%= @geo_location.long %>
+</p>
+
+<p>
+  <b>Locatable:</b>
+  <%= @geo_location.locatable_id %>
+</p>
+
+<p>
+  <b>Locatable type:</b>
+  <%= @geo_location.locatable_type %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @geo_location.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_geo_location_path(@geo_location) %> |
+<%= link_to 'Back', geo_locations_path %>

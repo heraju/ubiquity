@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Transport type:</b>
+  <%= @transport.transport_type_id %>
+</p>
+
+<p>
+  <b>Session:</b>
+  <%= @transport.session %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @transport.user_id %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @transport.number %>
+</p>
+
+
+<%= link_to 'Edit', edit_transport_path(@transport) %> |
+<%= link_to 'Back', transports_path %>
