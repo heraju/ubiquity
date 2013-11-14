@@ -36,7 +36,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><a href="#signout" >Signout</a></li>
+              <li><%= link_to t(:signout), destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "Find Friends", '#users_path' %></li>
               <%#= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
             <% else %>
@@ -47,8 +47,7 @@
         </div>
       </div>
     </div>
-<div class="container">
-
+    <div class="container">
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-6" style="margin:2%">
@@ -58,11 +57,9 @@
         </div>
       </div>
       <div class="row">
-          <%= yield %>
-
+        <%= flash_messages %>
+        <%= yield %>
       </div>
-
-</div>
-
+    </div>
   </body>
 </html>
