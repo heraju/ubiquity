@@ -1,0 +1,35 @@
+<div class="col-lg-6">
+<div class="well">
+<h2>Edit My Profile</h2>
+<%#= @user.inspect %>
+<%= form_for @user,  :url => {:controller => "myprofile", :action => "update" } do |f| %>
+	<div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :disabled => true, :class => 'form-control' %>
+  </div>
+    <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :class => 'form-control'  %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select :gender,  options_for_select(["Male", "Female"]),{ :include_blank => false } ,{ :class => 'select1' }%>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, :class => 'form-control'  %>
+  </div>
+  <div class="field">
+    <%= f.label :sos_number %><br />
+    <%= f.text_field :sos_number, :class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" , :class => 'btn btn-success'%>
+  </div>
+<% end %>
+</div>
+</div>

@@ -30,6 +30,11 @@ Ubiquity::Application.routes.draw do
     end
   end
 
+  resources :myprofile do
+    collection do
+      match :update
+    end
+  end    
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
@@ -89,7 +94,8 @@ Ubiquity::Application.routes.draw do
   root :to => 'welcome#index'
   match 'fetch_bus' => 'welcome#fetch_bus'
   match '/about' => 'welcome#about'
-  match 'editprofile' => 'myprofile#edit'
+  match '/editprofile' => 'myprofile#edit'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
