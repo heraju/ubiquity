@@ -4,7 +4,7 @@ class AndroidApiController < ApplicationController
     resource = User.find_for_database_authentication(:email=>params[:email])
     if resource
       if resource.valid_password?(params[:password])
-        render :json => {:response => true, :user_id => resource.id, :email => resource.email, :first_name => resource.first_name, :last_name => resource.last_name}
+        render :json => {:response => true, :user_id => resource.id, :email => resource.email, :first_name => resource.first_name, :last_name => resource.last_name, :phone_number => resource.phone_number, :sos_number =>  resource.sos_number }
       else
         render :json => {:response => false}.to_json
       end

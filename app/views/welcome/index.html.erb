@@ -1,11 +1,7 @@
 <div class="span1"></div>
-<div class="span10">
-<div id="map" style="height: 400px"></div>
-</div>
-<div class="span1"></div>
-  
-   <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-  <script>
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<script>
+    function load_maps_again(){ 
     var map = L.map('map').setView([12.96, 77.56], 13);
     var result=<%= raw @lat_long_values.to_json %>;
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
@@ -22,4 +18,40 @@
              .bindPopup("<b>Bus Number: "+result[i][2]+"</b>.").openPopup();
            }
       } 
+    }
+  </script>
+
+<div id="dynamic_load">
+  <div class="span10">
+<div id="map" style="height: 400px"></div>
+</div>
+<script>
+    var map = L.map('map').setView([12.96, 77.56], 13);
+    var result=<%= raw @lat_long_values.to_json %>;
+    L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+    }).addTo(map);
+      if (result==false){
+
+      }
+      else{
+        for(var i=0; i < result.length; i++)
+          {
+             L.marker([result[i][0],result[i][1]]).addTo(map)
+             .bindPopup("<b>Bus Number: "+result[i][2]+"</b>.").openPopup();
+           }
+      } 
+  </script>
+
+</div>
+<div class="span1"></div> 
+<script>
+  function fetch_location(){
+    $.get("/fetch_bus",function(data,status){
+      document.getElementById("dynamic_load").innerHTML=data;
+      load_maps_again();
+  });
+  }
+  var tid = setInterval(fetch_location, 5000);
   </script>
