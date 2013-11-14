@@ -6,10 +6,10 @@ class AndroidApiController < ApplicationController
       if resource.valid_password?(params[:password])
         render :json => {:response => true, :user_id => resource.id, :email => resource.email, :first_name => resource.first_name, :last_name => resource.last_name}
       else
-        render :json => {:response => true}.to_json
+        render :json => {:response => false}.to_json
       end
     else
-      render :json => {:response => true}.to_json
+      render :json => {:response => false}.to_json
     end
   end
 

@@ -24,6 +24,8 @@ Ubiquity::Application.routes.draw do
   resources :android_api do
     collection do 
       get :android_connect_user
+      get :android_create_trip
+      get :android_destroy_trip
     end
   end
 
