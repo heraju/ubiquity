@@ -67,3 +67,24 @@ div {
     list-style: square;
   }
 }
+
+.signup-facebook.btn {
+font-size: 20px !important;
+font-weight: 300;
+-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 3px rgba(0,0,0,0.3);
+-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 3px rgba(0,0,0,0.3);
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 3px rgba(0,0,0,0.3);
+background-color: #355a9a;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#5e88d3), to(#355a9a));
+background-image: -moz-linear-gradient(top, #5e88d3, #355a9a);
+background-image: -ms-linear-gradient(top, #5e88d3, #355a9a);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5e88d3), color-stop(100%, #355a9a));
+background-image: -webkit-linear-gradient(top, #5e88d3, #355a9a);
+background-image: -o-linear-gradient(top, #5e88d3, #355a9a);
+background-image: linear-gradient(top, #5e88d3, #355a9a);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e88d3', endColorstr='#355a9a', GradientType=0);
+border: 1px solid #00254b;
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.75);
+}

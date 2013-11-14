@@ -1,6 +1,8 @@
 Ubiquity::Application.routes.draw do
   
   
+  get "myprofile/index"
+
   resources :transport_types
 
 
