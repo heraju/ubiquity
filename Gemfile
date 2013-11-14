@@ -28,10 +28,6 @@ gem 'jquery-rails'
 
 gem 'unicorn', '4.6.3'
 
-gem 'omniauth-facebook'
-
-gem 'therubyracer'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -46,6 +42,10 @@ gem 'therubyracer'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
