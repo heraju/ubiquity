@@ -40,6 +40,15 @@ class AndroidApiController < ApplicationController
   end
 
   def android_stream_geo
+  	#http://www.cuputt.com/android_api/android_stream_geo?userid=1&tripid=1&lat=12.96&long=77.56
+  	@transport = Transport.find(params["tripid"].to_i)
+  	@transport.geo_locations << GeoLocation.create(:lat => params['lat'] , :long => params['long'])
+
+  	if @transport.update_attributes(:lat => params['lat'], :long => params['long']) 
+        render :json => {:response => true}.to_json
+    else
+        render :json => {:response => false}.to_json
+    end
   	
   end	
   	
