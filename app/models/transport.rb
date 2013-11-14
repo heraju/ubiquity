@@ -6,7 +6,7 @@ class Transport < ActiveRecord::Base
   belongs_to :user
   def self.get_bus_information
     begin
-      where(:session => "ACTIVE").group(:number).map{|t| [t.lat,t.long,t.number]}
+      where(:session => "ACTIVE").map{|t| [t.lat,t.long,t.number]}
     rescue Exception => e
       return false
     end    
