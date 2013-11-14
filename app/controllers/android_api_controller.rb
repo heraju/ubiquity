@@ -4,12 +4,12 @@ class AndroidApiController < ApplicationController
     resource = User.find_for_database_authentication(:email=>params[:email])
     if resource
       if resource.valid_password?(params[:password])
-        render :text => "true,#{resource.id}, #{resource.email}, #{resource.first_name}, #{resource.last_name}"
+        render :json => {:response => true, :user_id => resource.id, :email => resource.email, :first_name => resource.first_name, :last_name => resource.last_name, :phone_number => resource.phone_number, :sos_number =>  resource.sos_number }
       else
-        render :text => "false"
+        render :json => {:response => false}.to_json
       end
     else
-      render :text => "false"
+      render :json => {:response => false}.to_json
     end
   end
 
@@ -23,16 +23,33 @@ class AndroidApiController < ApplicationController
   	@transport.long = params['long']
   	@transport.session = "active"
   	if @transport.save
-      render :text => "true,#{@transport.id}"
+      render :json => {:response => true, :trip_id => @transport.id}.to_json 
     else
-      render :text => "false"
+      render :json => {:response => false}.to_json
     end
   end
 
   def android_destroy_trip
   	#http://www.cuputt.com/android_api/android_destroy_trip?userid=1&tripid=1&lat=12.96&long=77.56
   	@transport = Transport.find(params["tripid"].to_i)
-  	render :text => @transport.session
+  	if @transport.update_attributes(:session => "close",:lat => params['lat'], :long => params['long'] )
+        render :json => {:response => true}.to_json
+    else
+        render :json => {:response => false}.to_json
+    end
+  end
+
+  def android_stream_geo
+  	#http://www.cuputt.com/android_api/android_stream_geo?userid=1&tripid=1&lat=12.96&long=77.56
+  	@transport = Transport.find(params["tripid"].to_i)
+  	@transport.geo_locations << GeoLocation.create(:lat => params['lat'] , :long => params['long'])
+
+  	if @transport.update_attributes(:lat => params['lat'], :long => params['long']) 
+        render :json => {:response => true}.to_json
+    else
+        render :json => {:response => false}.to_json
+    end
+  	
   end	
   	
 end

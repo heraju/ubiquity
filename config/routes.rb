@@ -24,6 +24,9 @@ Ubiquity::Application.routes.draw do
   resources :android_api do
     collection do 
       get :android_connect_user
+      get :android_create_trip
+      get :android_destroy_trip
+      get :android_stream_geo
     end
   end
 
@@ -84,7 +87,9 @@ Ubiquity::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'welcome#index'
+  match 'fetch_bus' => 'welcome#fetch_bus'
   match '/about' => 'welcome#about'
+  match 'editprofile' => 'myprofile#edit'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
