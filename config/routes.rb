@@ -27,6 +27,7 @@ Ubiquity::Application.routes.draw do
       get :android_create_trip
       get :android_destroy_trip
       get :android_stream_geo
+      get :busses_nearby
     end
   end
 
