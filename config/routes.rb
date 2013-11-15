@@ -95,6 +95,8 @@ Ubiquity::Application.routes.draw do
   match 'fetch_bus' => 'welcome#fetch_bus'
   match '/about' => 'welcome#about'
   match '/editprofile' => 'myprofile#edit'
+  match '/my_travel_history' => 'myprofile#my_travel_history'
+  match '/build_history/:id' => 'myprofile#build_history'
 
   # See how all your routes lay out with "rake routes"
 
