@@ -1,16 +1,36 @@
-<div id= "travel_history">
+<div id= "travel_history" style="width:100%">
+	
+<div class="span6" style="width:70%">
+<div id="map1" style="height: 250px"></div>
+<p>BUS No : <%=@travel_history_list.last[1]%></p>
+</div>
+
+<div style="width:30%">
   <h2>TRIP LIST</h2>
-<% @travel_history_list.each do |t| %>
-  <p><button type="button" class="btn btn-default"><%= t[1]%> On : <%=t[2].strftime("%d-%m-%Y %H:%M") %></button></p>
+<% @travel_history_list.reverse.each do |t| %>
+  <p><button type="button" class="btn btn-default active"><%= t[1]%> On : <%=t[2].strftime("%d-%m-%Y %H:%M") %></button></p>
 <% end %>
 </div>
-<div id="map" style="height: 150px">
+
 </div>
+
 <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 <script>
-    var map = L.map('map').setView([12.96, 77.56], 13);
+    var map = L.map('map1').setView([12.96, 77.56], 13);
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 200,
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
     }).addTo(map); 
+    var pointA = new L.LatLng(<%=@start_point.lat%>, <%=@start_point.long%>);
+    var pointB = new L.LatLng(<%=@end_point.lat%>, <%=@end_point.long%>);
+    var pointList = [pointA, pointB];
+    var firstpolyline = new L.Polyline(pointList, {
+    color: 'red',
+    weight: 10,
+    opacity: 0.5,
+    smoothFactor: 1
+    });
+    map.addLayer(firstpolyline);
+    L.marker([<%=@start_point.lat%>, <%=@start_point.long%>]).addTo(map).bindPopup("<b>Start</b>").openPopup();
+    L.marker([<%=@end_point.lat%>, <%=@end_point.long%>]).addTo(map).bindPopup("<b>End</b>").openPopup();
   </script>
