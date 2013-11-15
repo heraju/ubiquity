@@ -42,13 +42,13 @@
               <ul class="dropdown-menu" aria-labelledby="themes">
                 <li><a tabindex="-1" href="/editprofile">Edit Profile</a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1" href="#">My Friends</a></li>
+                <li><%= link_to 'My Friends', profile_path %></li>
+                <li><%= link_to 'Find Friends', users_path %></li>
                 <li><a tabindex="-1" href="/my_travel_history">My Travel History</a></li>
                 <li><a tabindex="-1" href="#">Pom-Poms</a></li>
               </ul>
             </li>
               <li><%= link_to t(:signout), destroy_user_session_path, method: :delete %></li>
-              <%#= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
             <% else %>
               <li><a href="/users/sign_in" >Sign-in</a></li>
               <li><a href="/users/sign_up" >Sign-up</a></li>

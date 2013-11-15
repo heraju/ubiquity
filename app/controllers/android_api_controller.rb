@@ -51,5 +51,15 @@ class AndroidApiController < ApplicationController
     end
   	
   end	
+  
+  def busses_nearby
+    near_by_busses = Transport.get_nearest_ones(params[:user_id])
+    if near_by_busses.any?
+      str = near_by_busses.map{|u| "#{u[0]},#{u[1]}"}.join("|").to_s
+      render :json => {:response => str}.to_json
+    else
+      render :json => {:response => false}.to_json
+    end
+  end
   	
 end

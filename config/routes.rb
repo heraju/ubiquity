@@ -27,6 +27,7 @@ Ubiquity::Application.routes.draw do
       get :android_create_trip
       get :android_destroy_trip
       get :android_stream_geo
+      get :busses_nearby
     end
   end
 
@@ -37,6 +38,11 @@ Ubiquity::Application.routes.draw do
   end    
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  get '/profile', to: 'users#show'
+  get '/users', to: 'users#index'
+  post '/users/:id/add_friend', to: 'users#add_friend'
+  delete '/users/:id/remove_friend', to: 'users#remove_friend'
 
   # match 'auth/:provider/callback', to: 'sessions#create'
   # match 'auth/failure', to: redirect('/')
