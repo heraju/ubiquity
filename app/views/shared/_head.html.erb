@@ -23,31 +23,34 @@
   </script>
 <% end %>
 
-<script type="text/javascript">
-  if (navigator.geolocation) {
-    var timeoutVal = 10 * 1000 * 1000;
-    navigator.geolocation.getCurrentPosition(
-      displayPosition, 
-      displayError,
-      { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
-    );
-    } else {
-      alert("Geolocation is not supported by this browser");
+<% if current_user%>
+  <script type="text/javascript">
+    if (navigator.geolocation) {
+      var timeoutVal = 10 * 1000 * 1000;
+      navigator.geolocation.getCurrentPosition(
+        displayPosition, 
+        displayError,
+        { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+      );
+      } else {
+        alert("Geolocation is not supported by this browser");
+      }
+
+    function displayPosition(position) {
+      L.marker([position.coords.latitude,position.coords.longitude]).addTo(map)
+      .bindPopup("<b>My location</b>.").openPopup();
+      $.get( "<%= android_create_trip_android_api_index_url %>", { userid: <%= current_user.try(:id) %>, lat: position.coords.latitude, long: position.coords.longitude, type: 1, number: 'My location'} );
     }
 
-  function displayPosition(position) {
-    L.marker([position.coords.latitude,position.coords.longitude]).addTo(map)
-    .bindPopup("<b>My location</b>.").openPopup();
-  }
-
-  function displayError(error) {
-    var errors = { 
-      1: 'Permission denied',
-      2: 'Position unavailable',
-      3: 'Request timeout'
-    };
-    alert("Error: " + errors[error.code]);
-  }
-</script>
+    function displayError(error) {
+      var errors = { 
+        1: 'Permission denied',
+        2: 'Position unavailable',
+        3: 'Request timeout'
+      };
+      alert("Error: " + errors[error.code]);
+    }
+  </script>
+<% end %>
 
 <%= yield(:head) %>
