@@ -27,6 +27,7 @@ Ubiquity::Application.routes.draw do
       get :android_create_trip
       get :android_destroy_trip
       get :android_stream_geo
+      get :busses_nearby
     end
   end
 
@@ -100,6 +101,8 @@ Ubiquity::Application.routes.draw do
   match 'fetch_bus' => 'welcome#fetch_bus'
   match '/about' => 'welcome#about'
   match '/editprofile' => 'myprofile#edit'
+  match '/my_travel_history' => 'myprofile#my_travel_history'
+  match '/build_history/:id' => 'myprofile#build_history'
 
   # See how all your routes lay out with "rake routes"
 
