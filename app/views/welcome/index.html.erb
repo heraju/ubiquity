@@ -1,7 +1,7 @@
-<div class="offset3 span6">
-  <%= link_to 'Start tracking', '/', class: 'btn btn-success' %>
+<div class='span6'>
+  <%= link_to 'Start tracking', '/', class: 'btn btn-success', id: 'start-tracking' %>
 </div>
-
+<br>
 <div class="span1"></div>
 <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 <script>
@@ -27,9 +27,9 @@
 
 <div id="dynamic_load">
   <div class="span10">
-<div id="map" style="height: 400px"></div>
-</div>
-<script>
+    <div id="map" style="height: 400px"></div>
+  </div>
+  <script>
     var map = L.map('map').setView([12.96, 77.56], 13);
     var result=<%= raw @lat_long_values.to_json %>;
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
@@ -58,4 +58,4 @@
   });
   }
   var tid = setInterval(fetch_location, 5000);
-  </script>
+</script>
