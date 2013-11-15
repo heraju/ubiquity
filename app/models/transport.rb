@@ -37,4 +37,14 @@ class Transport < ActiveRecord::Base
       return false
     end    
   end
+  
+  def self.get_nearest_ones(user_id)
+    user_location = self.find_by_user_id(user_id)
+    lat = user_location.lat
+    long = user_location.long
+    
+    result = Transport.find_by_sql("SELECT *, 3956 * 2 * ASIN(SQRT( POWER(SIN((#{lat} - abs(dest.lat)) * pi()/180 / 2),2) + COS(#{long} * pi()/180 ) * COS(abs(dest.lat) *  pi()/180) * POWER(SIN((#{long} - dest.long) *  pi()/180 / 2), 2) )) as distance FROM transports dest having distance < 5 ORDER BY distance limit 10")
+    user_loc_hash = result.map{|r| [r.lat,r.long]}
+    return user_loc_hash
+  end
 end
